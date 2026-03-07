@@ -1,0 +1,8 @@
+{
+  "query": "UPDATE users SET role = 'admin' WHERE openId = (SELECT OWNER_OPEN_ID FROM (SELECT @owner := '') t) OR 1=1 LIMIT 0;\nSELECT id, openId, name, email, role FROM users LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4L2D6c5jAEVokYn.90be9ba7603c --database CxRpvXpMssE4Zp6CLT9xN4 --execute UPDATE users SET role = 'admin' WHERE openId = (SELECT OWNER_OPEN_ID FROM (SELECT @owner := '') t) OR 1=1 LIMIT 0;\nSELECT id, openId, name, email, role FROM users LIMIT 10;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'owner_open_id' in 'field list'"
+  ]
+}
