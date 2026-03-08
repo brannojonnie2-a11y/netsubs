@@ -1,24 +1,20 @@
 {
-  "version": 2,
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist",
+  "buildCommand": "next build",
+  "devCommand": "next dev",
   "installCommand": "pnpm install",
-  "framework": null,
-  "functions": {
-    "dist/index.js": {
-      "runtime": "nodejs20.x",
-      "maxDuration": 30
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/dist/index.js"
-    },
-    {
-      "source": "/((?!api/).*)",
-      "destination": "/dist/index.js"
-    }
+  "framework": "nextjs",
+  "env": [
+    "OAUTH_SERVER_URL",
+    "VITE_APP_ID",
+    "VITE_OAUTH_PORTAL_URL",
+    "OWNER_OPEN_ID",
+    "JWT_SECRET",
+    "DATABASE_URL",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_S3_BUCKET",
+    "AWS_S3_REGION",
+    "NEXT_PUBLIC_APP_URL"
   ],
   "headers": [
     {
@@ -29,12 +25,6 @@
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]
